@@ -1,0 +1,101 @@
+.footer {
+    background: #f6f7f8;
+    padding: 48px 0 0 0;
+    color: #222;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    margin-top: 48px;
+}
+.footer-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 64px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-bottom: 32px;
+    flex-wrap: wrap;
+}
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 48px;
+    min-width: 220px;
+}
+.footer-logo {
+    height: 56px;
+    width: 56px;
+    margin-bottom: 8px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.footer-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fc8019;
+    margin-bottom: 8px;
+    margin-top: 4px;
+}
+.footer-copyright {
+    font-size: 1.1rem;
+    color: #888;
+    margin-bottom: 18px;
+}
+.footer-columns {
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+    flex-wrap: wrap;
+}
+.footer-col {
+    min-width: 180px;
+    margin-bottom: 24px;
+}
+.footer-col h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #222;
+}
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+}
+.footer-col ul li {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.footer-col ul li:hover {
+    color: #fc8019;
+}
+.footer-socials {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+}
+.footer-socials a {
+    color: #222;
+    font-size: 1.4rem;
+    transition: color 0.2s;
+}
+.footer-socials a:hover {
+    color: #fc8019;
+}
+@media (max-width: 900px) {
+    .footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+        padding: 0 24px 32px 24px;
+    }
+    .footer-columns {
+        flex-direction: column;
+        gap: 24px;
+    }
+}

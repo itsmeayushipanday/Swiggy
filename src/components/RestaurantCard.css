@@ -1,0 +1,18 @@
+.restaurant-card {
+    width: 320px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.restaurant-card img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.restaurant-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.04);
+}
