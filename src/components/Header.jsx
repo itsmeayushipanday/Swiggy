@@ -40,12 +40,8 @@ function Header({ onSearch }) {
                 placeholder="Search restaurants or dishes..."
                 value={searchTerm}
                 onChange={handleInputChange}
-                style={{ marginLeft: 20, padding: 6, borderRadius: 4, border: '1px solid #ccc', minWidth: 220 }}
             />
             <nav className="nav-links">
-                {/* Removed Search link */}
-                <Link to="/help">Help</Link>
-                <Link to="/about">About</Link>
                 <Link to="/cart" className="header-cart-link">
                     Cart{cartCount > 0 && <span className="header-cart-count">{cartCount}</span>}
                 </Link>

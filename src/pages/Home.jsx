@@ -132,16 +132,22 @@ function Home({ searchTerm }){
                     </div>
                 </div>
                 <div className="mind-cuisines-row">
-                    {cuisines.slice(cuisineScroll, cuisineScroll + 6).map((cuisine, idx) => (
-                        <div
-                            className="mind-cuisine-card"
-                            key={cuisine.id || idx}
-                            onClick={() => navigate(`/cuisine/${encodeURIComponent(cuisine.action?.text || '')}`)}
-                            style={{ cursor: 'pointer' }}
-                        >
-                            <img src={cuisine.imageId ? `https://media-assets.swiggy.com/swiggy/image/upload/${cuisine.imageId}` : ''} alt={cuisine.accessibility?.altText || cuisine.action?.text || 'Cuisine'} className="mind-cuisine-img" />
-                        </div>
-                    ))}
+                    {loading
+                        ? Array.from({ length: 6 }).map((_, idx) => (
+                            <div className="mind-cuisine-card shimmer" key={idx}>
+                                <div className="mind-cuisine-shimmer-img shimmer-anim"></div>
+                            </div>
+                        ))
+                        : cuisines.slice(cuisineScroll, cuisineScroll + 6).map((cuisine, idx) => (
+                            <div
+                                className="mind-cuisine-card"
+                                key={cuisine.id || idx}
+                                onClick={() => navigate(`/cuisine/${encodeURIComponent(cuisine.action?.text || '')}`)}
+                                style={{ cursor: 'pointer' }}
+                            >
+                                <img src={cuisine.imageId ? `https://media-assets.swiggy.com/swiggy/image/upload/${cuisine.imageId}` : ''} alt={cuisine.accessibility?.altText || cuisine.action?.text || 'Cuisine'} className="mind-cuisine-img" />
+                            </div>
+                        ))}
                 </div>
             </div>
             <div className="home-header-row">
