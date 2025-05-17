@@ -58,6 +58,30 @@
     color: #fc8019;
 }
 
+.header-cart-link {
+  position: relative;
+  font-weight: 600;
+  color: #222;
+  text-decoration: none;
+  font-size: 1.15rem;
+  margin-left: 18px;
+}
+
+.header-cart-count {
+  color: black;
+  background-color: rgb(253, 251, 251);
+  font-size: 0.98rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  position: absolute;
+  top: -18px;
+  right: -20px;
+  min-width: 22px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(252,128,25,0.13);
+  display: inline-block;
+}
+
 @media (max-width: 900px) {
     .header {
         flex-direction: column;

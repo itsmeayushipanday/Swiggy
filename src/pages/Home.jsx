@@ -145,7 +145,7 @@ function Home({ searchTerm }){
                 </div>
             </div>
             <div className="home-header-row">
-                <h2>Top Restaurants Near Me</h2>
+                <h2 className="hello">Top Restaurants Near Me</h2>
                 <div className="filters-row">
                     {FILTERS.map(f => (
                         <button
