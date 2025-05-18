@@ -1,8 +1,6 @@
 import {Routes, Route} from 'react-router-dom';
 import { useState } from 'react';
 import Home from './pages/Home';
-import About from './pages/About';
-import Help from './pages/Help';
 import Cart from './pages/Cart';
 import Restaurant from './pages/Restaurant';
 import Header from './components/Header';
@@ -14,11 +12,11 @@ function App() {
 
   return (
     <>
-      <Header onSearch={setSearchTerm} />
+      {/**onSearch prop is passed-> makes searching accessible overall */} 
+      <Header onSearch={setSearchTerm} /> 
       <Routes>
         <Route path="/" element={<Home searchTerm={searchTerm} />} />
-        <Route path="/help" element={<Help />} />
-        <Route path="/about" element={<About />} />
+        {/**searchTerm prop sets the restaurant according to searching */}
         <Route path="/cart" element={<Cart />} />
         <Route path="/restaurant/:id" element={<Restaurant />} />
         <Route path="/cuisine/:cuisineName" element={<Cuisine />} />

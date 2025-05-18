@@ -9,22 +9,21 @@ function Header({ onSearch }) {
 
     const handleInputChange = (e) => {
         setSearchTerm(e.target.value);
-        onSearch(e.target.value);
+        onSearch(e.target.value); // Passes your searchings to parent which is App.jsx
     };
 
     useEffect(() => {
-        // Listen for cart changes in localStorage
         const updateCartCount = () => {
-            const cart = JSON.parse(localStorage.getItem('swiggy_cart') || '[]');
+            const cart = JSON.parse(localStorage.getItem('swiggy_cart') || '[]'); 
             const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
             setCartCount(count);
         };
-        updateCartCount();
-        window.addEventListener('storage', updateCartCount);
+        updateCartCount(); 
+        window.addEventListener('storage', updateCartCount); 
         // Custom event for same-tab updates
-        window.addEventListener('swiggy_cart_update', updateCartCount);
+        window.addEventListener('swiggy_cart_update', updateCartCount); 
         return () => {
-            window.removeEventListener('storage', updateCartCount);
+            window.removeEventListener('storage', updateCartCount); 
             window.removeEventListener('swiggy_cart_update', updateCartCount);
         };
     }, []);
@@ -32,7 +31,7 @@ function Header({ onSearch }) {
     return (
         <header className="header">
             <Link to="/" className="logo-link">
-                <img src={Logo} alt="Swiggy Logo" className="logo" style={{ height: 40 }} />
+                <img src={Logo} alt="Swiggy Logo" className="logo" />
             </Link>
             <input
                 type="text"
