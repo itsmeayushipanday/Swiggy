@@ -48,6 +48,12 @@
     color: #222;
 }
 
+.cart-item-restaurant{
+    font-size: 1rem;
+    color: #888;
+    font-weight: 400;
+}
+
 .cart-item-base {
     font-size: 1rem;
     color: #444;
@@ -98,4 +104,100 @@
     color: #888;
     font-size: 1.15rem;
     text-align: center;
-    margin: 48px 0; }
+    margin: 48px 0;
+}
+
+.cart-remove-btn {
+    background: #8f5757;
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    padding: 6px 18px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.cart-remove-btn:hover {
+    background: #541011;
+}
+
+@media (max-width: 900px) {
+  .cart-page {
+    max-width: 98vw;
+    padding: 12px 4px 18px 4px;
+  }
+  .cart-item-img {
+    width: 60px;
+    height: 48px;
+  }
+  .cart-item-title {
+    font-size: 1rem;
+  }
+  .cart-item-base, .cart-item-restaurant, .cart-addon-row {
+    font-size: 0.95rem;
+  }
+  .cart-item-total, .cart-grand-total {
+    font-size: 1.05rem;
+  }
+  .cart-remove-btn {
+    padding: 4px 10px;
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 600px) {
+  .cart-page {
+    max-width: 100vw;
+    padding: 4px 2px 10px 2px;
+  }
+  .cart-item {
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 0;
+  }
+  .cart-item-img-info {
+    gap: 8px;
+  }
+  .cart-item-img {
+    width: 48px;
+    height: 36px;
+    border-radius: 6px;
+  }
+  .cart-item-title {
+    font-size: 0.95rem;
+  }
+  .cart-item-base, .cart-item-restaurant, .cart-addon-row {
+    font-size: 0.9rem;
+  }
+  .cart-item-total, .cart-grand-total {
+    font-size: 1rem;
+  }
+  .cart-remove-btn {
+    padding: 2px 6px;
+    font-size: 0.9rem;
+  }
+}
+@media (min-width: 1200px) {
+  .cart-page {
+    max-width: 900px;
+    padding: 40px 40px 32px 40px;
+  }
+  .cart-item-img {
+    width: 100px;
+    height: 80px;
+  }
+  .cart-item-title {
+    font-size: 1.25rem;
+  }
+  .cart-item-base, .cart-item-restaurant, .cart-addon-row {
+    font-size: 1.1rem;
+  }
+  .cart-item-total, .cart-grand-total {
+    font-size: 1.25rem;
+  }
+  .cart-remove-btn {
+    padding: 8px 24px;
+    font-size: 1.1rem;
+  }
+}

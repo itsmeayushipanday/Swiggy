@@ -16,3 +16,26 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transform: scale(1.04);
 }
+
+@media (max-width: 900px) {
+  .restaurant-card {
+    width: 100%;
+    min-width: 0;
+    padding: 6px;
+  }
+  .restaurant-card img {
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .restaurant-card {
+    width: 100%;
+    min-width: 0;
+    padding: 2px;
+    border-radius: 6px;
+  }
+  .restaurant-card img {
+    border-radius: 3px;
+  }
+}

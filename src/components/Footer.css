@@ -34,7 +34,7 @@
 .footer-title {
     font-size: 2rem;
     font-weight: 700;
-    color: #fc8019;
+    color: #541011;
     margin-bottom: 8px;
     margin-top: 4px;
 }
@@ -72,7 +72,7 @@
     transition: color 0.2s;
 }
 .footer-col ul li:hover {
-    color: #fc8019;
+    color: #541011;
 }
 .footer-socials {
     display: flex;
@@ -85,7 +85,7 @@
     transition: color 0.2s;
 }
 .footer-socials a:hover {
-    color: #fc8019;
+    color: #541011;
 }
 @media (max-width: 900px) {
     .footer-top {

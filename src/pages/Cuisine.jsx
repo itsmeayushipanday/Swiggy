@@ -94,7 +94,7 @@ function Cuisine() {
                     Array.from({ length: 10 }).map((_, idx) => <ShimmerCard key={idx} />)
                 ) : filteredRestaurants && filteredRestaurants.length > 0 ? filteredRestaurants.map((res) =>
                     <RestaurantCard data={res} key={res.id} />
-                ) : <p>Sorry! No restaurants found for this cuisine.</p>}
+                    ) : <p>Sorry! No restaurants found for {decodeURIComponent(cuisineName)}.</p>}
             </div>
         </div>
     );

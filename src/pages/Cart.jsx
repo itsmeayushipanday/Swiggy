@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import './Cart.css'; // Assuming you have a CSS file for styling
+import './Cart.css'; 
 
 const Cart = ({ cart }) => {
-  // If cart is not passed as prop, try to get from localStorage (for demo)
-  const [cartState] = useState(cart || JSON.parse(localStorage.getItem('swiggy_cart') || '[]'));
+  const [cartState, setCartState] = useState(cart || JSON.parse(localStorage.getItem('swiggy_cart') || '[]'));
 
   const getAddonNames = (item) => {
     if (!item.addonGroups) return null;
@@ -22,6 +21,13 @@ const Cart = ({ cart }) => {
     return cartState.reduce((sum, item) => sum + (item.total * item.quantity), 0).toFixed(2);
   };
 
+  const handleRemove = (id) => {
+    const updatedCart = cartState.filter(item => item.id !== id);
+    setCartState(updatedCart);
+    localStorage.setItem('swiggy_cart', JSON.stringify(updatedCart));
+    window.dispatchEvent(new Event('swiggy_cart_update'));
+  };
+
   return (
     <div className="cart-page">
       <h1>Your Cart</h1>
@@ -37,6 +43,7 @@ const Cart = ({ cart }) => {
                 )}
                 <div className="cart-item-info">
                   <div className="cart-item-title">{item.name}</div>
+                  <div className="cart-item-restaurant">Restaurant Name: {item.restaurantName}</div>
                   <div className="cart-item-base">Base: ₹{item.basePrice}</div>
                   {getAddonNames(item)}
                 </div>
@@ -44,6 +51,7 @@ const Cart = ({ cart }) => {
               <div className="cart-item-qty-price">
                 <div className="cart-item-qty">Qty: {item.quantity}</div>
                 <div className="cart-item-total">₹{(item.total * item.quantity).toFixed(2)}</div>
+                <button className="cart-remove-btn" onClick={() => handleRemove(item.id)}>Remove</button>
               </div>
             </div>
           ))}

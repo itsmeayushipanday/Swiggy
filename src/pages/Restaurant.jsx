@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './Restaurant.css';
-import addBtn from '../assets/btn.png';
 
 const Restaurant = () => {
   const { id } = useParams();
@@ -13,13 +12,13 @@ const Restaurant = () => {
   const [addonGroups, setAddonGroups] = useState([]);
   const [currentDish, setCurrentDish] = useState(null);
   const [addonStep, setAddonStep] = useState(0);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    return JSON.parse(localStorage.getItem('swiggy_cart'));
+  });
   const [addedDishIds, setAddedDishIds] = useState([]);
-  // Filter state for restaurant page
   const [dishFilters, setDishFilters] = useState([]);
-
-  // Get restaurant name from API response
   const [restaurantName, setRestaurantName] = useState('');
+  const [restaurantAddress, setRestaurantAddress] = useState(''); 
 
   useEffect(() => {
     const fetchapi = async () => {
@@ -27,11 +26,18 @@ const Restaurant = () => {
         const response = await fetch(
           `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.490642&lng=80.3093933&restaurantId=${id}`
         );
+
         const newdata = await response.json();
-        // Get restaurant name
+        console.log("Data Fetched from individual Restaurant API: ", newdata);
+
         const restName = newdata?.data?.cards?.[2]?.card?.card?.info?.name || '';
+        console.log("Restaurant Name: ", restName);
         setRestaurantName(restName);
-        // All sections with itemCards object
+
+        const address = newdata?.data?.cards?.[2]?.card?.card?.info?.areaName + "," + " " + newdata?.data?.cards?.[2]?.card?.card?.info?.city || '';
+        console.log("Restaurant Location: ", location);
+        setRestaurantAddress(address);
+
         const cards = newdata?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
         const menuSections = cards
           .filter(c => c.card?.card?.itemCards && c.card?.card?.title)
@@ -40,8 +46,9 @@ const Restaurant = () => {
             items: c.card.card.itemCards.map(i => i.card.info),
             count: c.card.card.itemCards.length,
           }));
+          console.log("Dish Menu Sections: ", menuSections);  
         setSections(menuSections);
-        // By default, expand only the first section
+        // By default, expand the first section
         setExpanded(menuSections.reduce((acc, sec, idx) => ({ ...acc, [sec.title]: idx === 0 }), {}));
       } catch (e) {
         setSections([]);
@@ -55,6 +62,7 @@ const Restaurant = () => {
   // Open Addon Modal
   const handleAddClick = (item) => {
     setCurrentDish(item);
+    console.log("Selected Dish: ", item);
     setShowAddonModal(true);
     setAddonGroups(item.addons || []);
     setSelectedAddons({});
@@ -77,7 +85,7 @@ const Restaurant = () => {
     setExpanded(prev => ({ ...prev, [title]: !prev[title] }));
   };
 
-  // Calculate total price for modal
+  // Total price for showing in cart
   const getTotalPrice = () => {
     let base = (currentDish?.price || currentDish?.defaultPrice || 0) / 100;
     let addonTotal = 0;
@@ -93,15 +101,16 @@ const Restaurant = () => {
     return (base + addonTotal).toFixed(2);
   };
 
-  // Add to cart and update UI after modal
+  // Add to cart 
   const handleNextAddonStep = () => {
     if (addonStep < addonGroups.length - 1) {
       setAddonStep(addonStep + 1);
     } else {
-      // Final step: add to cart
+      // Adding my details to cart
       const total = getTotalPrice();
       const cartItem = {
         id: currentDish.id,
+        restaurantName: restaurantName,
         name: currentDish.name,
         imageId: currentDish.imageId,
         basePrice: (currentDish.price || currentDish.defaultPrice) / 100,
@@ -110,6 +119,7 @@ const Restaurant = () => {
         total: parseFloat(total),
         quantity: 1,
       };
+
       setCart(prev => [...prev, cartItem]);
       setAddedDishIds(prev => [...prev, currentDish.id]);
       setShowAddonModal(false);
@@ -155,7 +165,12 @@ const Restaurant = () => {
     <div className="restaurant-menu-page">
       {/* Restaurant name and dish filters */}
       <div className="restaurant-header-row">
-        <div className="restaurant-title"><b>{restaurantName}</b></div>
+        <div className="restaurant-title">
+          <b>{restaurantName}</b>
+          {restaurantAddress && (
+            <div className="restaurant-address">{restaurantAddress}</div>
+          )}
+        </div>
         <div className="restaurant-dish-filters">
           <button className={`dish-filter-btn${dishFilters.includes('veg') ? ' active' : ''}`} onClick={() => setDishFilters(f => f.includes('veg') ? f.filter(x => x !== 'veg') : [...f, 'veg'])}>Veg</button>
           <button className={`dish-filter-btn${dishFilters.includes('nonveg') ? ' active' : ''}`} onClick={() => setDishFilters(f => f.includes('nonveg') ? f.filter(x => x !== 'nonveg') : [...f, 'nonveg'])}>Non-Veg</button>

@@ -1,5 +1,5 @@
 import './Footer.css';
-import Logo from '../assets/logo.png';
+import Logo from '../assets/Feastify.png';
 import { CiLinkedin } from "react-icons/ci";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
@@ -15,21 +15,21 @@ function Footer() {
             <div className="footer-top">
                 <div className="footer-brand">
                     <img src={Logo} alt="Swiggy Logo" className="footer-logo" />
-                    <span className="footer-title">Swiggy</span>
-                    <span className="footer-copyright">© 2025 Swiggy Limited</span>
+                    <span className="footer-title">Feastify</span>
+                    <span className="footer-copyright">© 2025 Feastify Limited</span>
                 </div>
                 <div className="footer-columns">
                     <div className="footer-col">
                         <h4>Company</h4>
                         <ul>
                             <li>About Us</li>
-                            <li>Swiggy Corporate</li>
+                            <li>Feastify Corporate</li>
                             <li>Careers</li>
                             <li>Team</li>
-                            <li>Swiggy One</li>
-                            <li>Swiggy Instamart</li>
-                            <li>Swiggy Dineout</li>
-                            <li>Swiggy Genie</li>
+                            <li>Feastify One</li>
+                            <li>Feastify Instamart</li>
+                            <li>Feastify Dineout</li>
+                            <li>Feastify Genie</li>
                             <li>Minis</li>
                             <li>Pyng</li>
                         </ul>
@@ -62,10 +62,10 @@ function Footer() {
                         </ul>
                     </div>
                     <div className="footer-col">
-                        <h4>Life at Swiggy</h4>
+                        <h4>Life at Feastify</h4>
                         <ul>
-                            <li>Explore with Swiggy</li>
-                            <li>Swiggy News</li>
+                            <li>Explore with Feastify</li>
+                            <li>Feastify News</li>
                             <li>Snackables</li>
                         </ul>
                         <h4>Social Links</h4>
